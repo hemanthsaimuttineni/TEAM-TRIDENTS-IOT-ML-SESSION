@@ -1,37 +1,26 @@
 from flask import Flask, request
-from model import generateAi
+from model import generate
 import pickle
 
-# Generate model if needed
-generateAi()
+generate()
 
-# Load the trained model
 ai = pickle.load(open('ai.pkl', 'rb'))
 
-# Create Flask app
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/')
 def homepage():
-    return "Server is running"
+    return "Server Runnionggggggggggggggggggg"
 
-@app.route("/predict")
+@app.route('/predict')
 def predict():
-    # Get input parameter (ir)
     ir = request.args.get('ir')
-    if ir is None:
-        return "Error: Missing 'ir' parameter", 400
-    
-    try:
-        ir = int(ir)
-    except ValueError:
-        return "Error: 'ir' must be an integer", 400
-    
-    # Prepare data
+    ir = int(ir)
     data = [[ir]]
-    result = ai.predict(data)[0]   # Prediction
-    
-    return str(result)
+    result = ai.predict(data)[0]
+    return result
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=4000, debug=True)
+
+if (_name) == "main_":
+
+    app.run(host = '0.0.0.0',port=4000)
